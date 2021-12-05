@@ -12,7 +12,6 @@ import com.bc.demo.constant.api.ResultCode;
 import com.bc.demo.user.response.UserDTO;
 import com.bc.demo.user.service.UserService;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.PostConstruct;
@@ -25,7 +24,6 @@ import java.util.List;
  * @author fanls
  */
 @RestController
-@RequestMapping("user")
 public class UserController {
 
     @Resource
