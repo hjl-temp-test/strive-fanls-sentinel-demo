@@ -13,12 +13,4 @@
     <name>${project.artifactId}</name>
     <packaging>jar</packaging>
 
-    <dependencies>
-        <dependency>
-            <groupId>com.bc</groupId>
-            <artifactId>demo-user-api</artifactId>
-            <version>${sentinel-demo.project.version}</version>
-        </dependency>
-    </dependencies>
-
 </project>

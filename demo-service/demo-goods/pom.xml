@@ -12,12 +12,4 @@
     <name>${project.artifactId}</name>
     <packaging>jar</packaging>
 
-    <dependencies>
-        <dependency>
-            <groupId>com.bc</groupId>
-            <artifactId>demo-goods-api</artifactId>
-            <version>${sentinel-demo.project.version}</version>
-        </dependency>
-    </dependencies>
-
 </project>

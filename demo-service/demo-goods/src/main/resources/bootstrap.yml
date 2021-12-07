@@ -19,7 +19,6 @@ spring:
     sentinel:
       transport:
         dashboard: 127.0.0.1:6387
-#      eager: true
       datasource:
         ds1:
           nacos:
@@ -29,9 +28,14 @@ spring:
             groupId: demo
             data-type: json
             rule-type: flow
-
-
-
+dubbo:
+  scan:
+    base-packages: com.bc.demo.goods.impl
+  protocol:
+    name: dubbo
+    port: -1
+  registry:
+    address: nacos://127.0.0.1:8848
 
 #  jpa:
 #    hibernate:

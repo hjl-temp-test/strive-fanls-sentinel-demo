@@ -14,7 +14,8 @@
 
     <modules>
         <module>demo-user</module>
-<!--        <module>demo-order</module>-->
+        <module>demo-order</module>
+        <module>demo-goods</module>
     </modules>
 
     <dependencies>
@@ -65,7 +66,23 @@
             <groupId>com.alibaba.csp</groupId>
             <artifactId>sentinel-datasource-nacos</artifactId>
         </dependency>
-
+        <!-- api 依赖 start-->
+        <dependency>
+            <groupId>com.bc</groupId>
+            <artifactId>demo-user-api</artifactId>
+            <version>${sentinel-demo.project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.bc</groupId>
+            <artifactId>demo-order-api</artifactId>
+            <version>${sentinel-demo.project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.bc</groupId>
+            <artifactId>demo-goods-api</artifactId>
+            <version>${sentinel-demo.project.version}</version>
+        </dependency>
+        <!-- api 依赖 end-->
     </dependencies>
 
 </project>
