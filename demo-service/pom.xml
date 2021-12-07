@@ -13,9 +13,9 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>demo-user</module>
-        <module>demo-order</module>
-        <module>demo-goods</module>
+        <module>demo-provider</module>
+        <module>demo-consumerA</module>
+        <module>demo-consumerB</module>
     </modules>
 
     <dependencies>
@@ -69,17 +69,7 @@
         <!-- api 依赖 start-->
         <dependency>
             <groupId>com.bc</groupId>
-            <artifactId>demo-user-api</artifactId>
-            <version>${sentinel-demo.project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.bc</groupId>
-            <artifactId>demo-order-api</artifactId>
-            <version>${sentinel-demo.project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.bc</groupId>
-            <artifactId>demo-goods-api</artifactId>
+            <artifactId>demo-provider-api</artifactId>
             <version>${sentinel-demo.project.version}</version>
         </dependency>
         <!-- api 依赖 end-->

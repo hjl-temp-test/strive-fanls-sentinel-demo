@@ -1,0 +1,48 @@
+#服务器端口
+server:
+  port: 10010
+
+spring:
+  application:
+    name: demo-consumerA
+  cloud:
+    nacos:
+      discovery:
+        namespace: ae865828-fed1-4ac7-9a7e-593a5c0ab1f1
+        server-addr: 127.0.0.1:8848
+        group: demo
+      config:
+        file-extension: yaml
+        namespace: ae865828-fed1-4ac7-9a7e-593a5c0ab1f1
+        server-addr: 127.0.0.1:8848
+        group: demo
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:6387
+#      eager: true
+      datasource:
+        ds1:
+          nacos:
+            namespace: ae865828-fed1-4ac7-9a7e-593a5c0ab1f1
+            server-addr: 127.0.0.1:8848
+            dataId: ${spring.application.name}-flow-rules
+            groupId: demo
+            data-type: json
+            rule-type: flow
+
+dubbo:
+  scan:
+    base-packages: com.bc.demo.consumer.service
+  protocol:
+    name: dubbo
+    port: -1
+  registry:
+    address: nacos://127.0.0.1:8848
+
+
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+#    database: mysql
+#    show-sql: true
