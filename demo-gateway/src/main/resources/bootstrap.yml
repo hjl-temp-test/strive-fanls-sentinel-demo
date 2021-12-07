@@ -9,15 +9,18 @@ spring:
       discovery:
         namespace: ae865828-fed1-4ac7-9a7e-593a5c0ab1f1
         server-addr: 127.0.0.1:8848
-        group: test
+        group: demo
       config:
         file-extension: yaml
         namespace: ae865828-fed1-4ac7-9a7e-593a5c0ab1f1
         server-addr: 127.0.0.1:8848
-        group: test
+        group: demo
     sentinel:
       transport:
         dashboard: 127.0.0.1:6387
+#      eager: true
+      filter:
+        enabled: false
     gateway:
       discovery:
         locator:

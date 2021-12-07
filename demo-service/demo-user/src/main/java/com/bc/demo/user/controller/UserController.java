@@ -1,14 +1,11 @@
 package com.bc.demo.user.controller;
 
 
-import com.alibaba.csp.sentinel.Entry;
-import com.alibaba.csp.sentinel.SphU;
-import com.alibaba.csp.sentinel.slots.block.BlockException;
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.alibaba.csp.sentinel.slots.block.RuleConstant;
 import com.alibaba.csp.sentinel.slots.block.flow.FlowRule;
 import com.alibaba.csp.sentinel.slots.block.flow.FlowRuleManager;
 import com.bc.demo.constant.api.R;
-import com.bc.demo.constant.api.ResultCode;
 import com.bc.demo.user.response.UserDTO;
 import com.bc.demo.user.service.UserService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,15 +26,17 @@ public class UserController {
     @Resource
     private UserService userService;
 
-    @GetMapping("list")
-    public R<List<UserDTO>> list() {
-        try (Entry entry = SphU.entry("userList")) {
-            // 被保护的逻辑
-            return R.data(userService.list());
-        } catch (BlockException ex) {
-            // 处理被流控的逻辑
-            return R.success(ResultCode.SYSTEM_BUSY);
-        }
+    @SentinelResource(value = "test")
+    @GetMapping("test")
+    public R<List<UserDTO>> test() {
+        return R.success("调用成功了");
+//        try (Entry entry = SphU.entry("userList")) {
+//            // 被保护的逻辑
+//            return R.data(userService.list());
+//        } catch (BlockException ex) {
+//            // 处理被流控的逻辑
+//            return R.success(ResultCode.SYSTEM_BUSY);
+//        }
     }
 
 

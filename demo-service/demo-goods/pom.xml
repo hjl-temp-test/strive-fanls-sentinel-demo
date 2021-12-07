@@ -4,24 +4,18 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.bc</groupId>
-        <artifactId>sentinel-demo</artifactId>
+        <artifactId>demo-service</artifactId>
         <version>1.0.0</version>
     </parent>
 
-    <artifactId>demo-service-api</artifactId>
+    <artifactId>demo-goods</artifactId>
     <name>${project.artifactId}</name>
-    <packaging>pom</packaging>
-
-    <modules>
-        <module>demo-user-api</module>
-        <module>demo-order-api</module>
-        <module>demo-goods-api</module>
-    </modules>
+    <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
             <groupId>com.bc</groupId>
-            <artifactId>demo-constant</artifactId>
+            <artifactId>demo-goods-api</artifactId>
             <version>${sentinel-demo.project.version}</version>
         </dependency>
     </dependencies>

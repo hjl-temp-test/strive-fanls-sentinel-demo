@@ -1,6 +1,6 @@
 package com.bc.demo.user.api;
 
-import com.bc.demo.user.request.UserRequestDTO;
+import com.bc.demo.constant.api.R;
 import com.bc.demo.user.response.UserDTO;
 
 /**
@@ -10,5 +10,5 @@ public interface UserApi {
     /**
      * 获取用户信息
      */
-    UserDTO findUserDetail(UserRequestDTO requestDTO);
+    R<UserDTO> findUserDetail(String userCode);
 }
