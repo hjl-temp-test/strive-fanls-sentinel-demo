@@ -1,10 +1,10 @@
 #服务器端口
 server:
-  port: 10030
+  port: 9090
 
 spring:
   application:
-    name: demo-goods
+    name: demo-provider
   cloud:
     nacos:
       discovery:
@@ -30,7 +30,7 @@ spring:
             rule-type: flow
 dubbo:
   scan:
-    base-packages: com.bc.demo.goods.impl
+    base-packages: com.bc.demo.provider.service
   protocol:
     name: dubbo
     port: -1
