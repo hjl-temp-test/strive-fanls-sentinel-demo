@@ -30,7 +30,16 @@ spring:
             data-type: json
             rule-type: flow
 
-
+dubbo:
+  scan:
+    base-packages: com.bc.demo.consumer.service
+  protocol:
+    name: dubbo
+    port: -1
+  registry:
+    address: nacos://127.0.0.1:8848
+  cloud:
+    subscribed-services: demo-provider
 
 
 #  jpa:
