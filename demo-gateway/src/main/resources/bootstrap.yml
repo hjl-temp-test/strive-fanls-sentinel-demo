@@ -26,15 +26,15 @@ spring:
         locator:
           lowerCaseServiceId: true
       routes:
-        - id: demo-user
-          uri: lb://demo-user
+        - id: demo-consumerA
+          uri: lb://demo-consumerA
           predicates:
-            - Path=/user/**
+            - Path=/consumerA/**
           filters:
             - StripPrefix=1
-        - id: demo-order
-          uri: lb://demo-order
+        - id: demo-consumerB
+          uri: lb://demo-consumerB
           predicates:
-            - Path=/order/**
+            - Path=/consumerB/**
           filters:
             - StripPrefix=1

@@ -20,7 +20,7 @@ spring:
       transport:
         dashboard: 127.0.0.1:6387
       datasource:
-        ds1:
+        flow:
           nacos:
             namespace: ae865828-fed1-4ac7-9a7e-593a5c0ab1f1
             server-addr: 127.0.0.1:8848
@@ -28,6 +28,14 @@ spring:
             groupId: demo
             data-type: json
             rule-type: flow
+        degrade:
+          nacos:
+            namespace: ae865828-fed1-4ac7-9a7e-593a5c0ab1f1
+            server-addr: 127.0.0.1:8848
+            dataId: ${spring.application.name}-degrade-rules
+            groupId: demo
+            data-type: json
+            rule-type: degrade
 dubbo:
   scan:
     base-packages: com.bc.demo.provider.service

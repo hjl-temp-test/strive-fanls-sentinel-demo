@@ -43,6 +43,11 @@
             <artifactId>spring-cloud-starter-dubbo</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.alibaba.csp</groupId>
+            <artifactId>sentinel-apache-dubbo-adapter</artifactId>
+        </dependency>
+
         <!-- Nacos-config -->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
