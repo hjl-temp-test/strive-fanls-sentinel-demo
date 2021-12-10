@@ -17,6 +17,7 @@
     </properties>
 
     <modules>
+        <module>demo-test</module>
         <module>demo-constant</module>      <!-- 常量/枚举 -->
         <module>demo-gateway</module>       <!-- gateway -->
         <module>demo-service</module>       <!-- 服务 -->
