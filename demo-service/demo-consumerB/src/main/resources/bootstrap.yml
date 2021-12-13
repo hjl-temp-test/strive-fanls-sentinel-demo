@@ -40,7 +40,8 @@ dubbo:
     address: nacos://127.0.0.1:8848
   cloud:
     subscribed-services: demo-provider
-
+  metadata-report:
+    address: nacos://127.0.0.1:8848
 
 #  jpa:
 #    hibernate:

@@ -7,6 +7,8 @@ import cn.hutool.http.HttpUtil;
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * @author fanlinsheng
  * @version 1.0.0
@@ -17,10 +19,20 @@ public class SentinelTest {
 
     @Test
     public void test(){
-        ConcurrencyTester tester = ThreadUtil.concurrencyTest(100, () -> {
-            Console.log("=======");
+        ConcurrencyTester tester = ThreadUtil.concurrencyTest(40, () -> {
             // 测试的逻辑内容
-            Console.log(HttpUtil.get("http://localhost:10010/hello/pingpong"));
+            Console.log(HttpUtil.get("http://localhost:10010/hello/aliyun"));
+        });
+    }
+
+    @Test
+    public void test1(){
+        ConcurrencyTester tester = ThreadUtil.concurrencyTest(100, () -> {
+            try {
+                TimeUnit.SECONDS.sleep(30);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         });
     }
 

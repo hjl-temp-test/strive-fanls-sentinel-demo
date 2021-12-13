@@ -2,6 +2,7 @@ package com.bc.demo.consumer.controller;
 
 import com.bc.demo.constant.AppConstant;
 import com.bc.demo.provider.api.HelloService;
+import com.bc.demo.provider.api.OrderService;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,9 @@ public class DemoController {
     @DubboReference(version = AppConstant.DUBBO_SERVICE_VERSION)
     private HelloService helloService;
 
+    @DubboReference(version = AppConstant.DUBBO_SERVICE_VERSION)
+    private OrderService orderService;
+
     @GetMapping("hello/{name}")
     public String sayHello(@PathVariable("name") String name) {
         return helloService.sayHello(name);
@@ -32,6 +36,17 @@ public class DemoController {
     @GetMapping("demo")
     public String demo() {
         return "Sentinel Demo";
+    }
+
+
+    @GetMapping("create")
+    public String create() {
+        return orderService.create();
+    }
+
+    @GetMapping("pay")
+    public String pay() {
+        return orderService.pay();
     }
 
 }

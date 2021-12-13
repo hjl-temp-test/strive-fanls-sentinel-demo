@@ -1,15 +1,16 @@
 package com.bc.demo.provider.service;
 
 import cn.hutool.core.date.DateUtil;
-import cn.hutool.core.util.RandomUtil;
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.bc.demo.constant.AppConstant;
 import com.bc.demo.provider.api.HelloService;
 import com.bc.demo.provider.handler.BlockHandler;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboService;
 
 import java.time.LocalDateTime;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author fanlinsheng
@@ -20,18 +21,18 @@ import java.time.LocalDateTime;
 @DubboService(version = AppConstant.DUBBO_SERVICE_VERSION)
 public class HelloServiceImpl implements HelloService {
 
+    @SneakyThrows
     @SentinelResource(value = "sayHello"
             , blockHandlerClass = BlockHandler.class
-            , blockHandler = "allHandlerException"
-//            , fallbackClass = HelloFallback.class
-//            , fallback = "sayHello"
+            , blockHandler = "helloHandlerException"
     )
     @Override
     public String sayHello(String name) {
         log.info("请求了 com.bc.demo.provider.service.HelloServiceImpl.sayHello");
-        if (RandomUtil.randomInt(10) % 2 == 0) {
-            throw new RuntimeException("系统异常");
-        }
+//        if (RandomUtil.randomInt(10) % 2 == 0) {
+//            throw new RuntimeException("系统异常");
+//        }
+        TimeUnit.MILLISECONDS.sleep(200);
         return String.format("Hello, %s at %s", name, DateUtil.formatLocalDateTime(LocalDateTime.now()));
     }
 
