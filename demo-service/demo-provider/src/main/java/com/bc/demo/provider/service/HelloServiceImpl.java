@@ -1,10 +1,13 @@
 package com.bc.demo.provider.service;
 
 import cn.hutool.core.date.DateUtil;
+import cn.hutool.core.util.StrUtil;
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import com.alibaba.fastjson.JSONObject;
 import com.bc.demo.constant.AppConstant;
 import com.bc.demo.provider.api.HelloService;
-import com.bc.demo.provider.handler.BlockHandler;
+import com.bc.demo.provider.handler.HelloBlockHandler;
+import com.bc.demo.provider.request.HelloRequest;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboService;
@@ -23,21 +26,28 @@ public class HelloServiceImpl implements HelloService {
 
     @SneakyThrows
     @SentinelResource(value = "sayHello"
-            , blockHandlerClass = BlockHandler.class
-            , blockHandler = "helloHandlerException"
+            , blockHandlerClass = HelloBlockHandler.class
+            , blockHandler = "sayHelloBlockHandler"
     )
+
     @Override
     public String sayHello(String name) {
         log.info("请求了 com.bc.demo.provider.service.HelloServiceImpl.sayHello");
-//        if (RandomUtil.randomInt(10) % 2 == 0) {
-//            throw new RuntimeException("系统异常");
-//        }
-        TimeUnit.MILLISECONDS.sleep(200);
+        if(StrUtil.equalsIgnoreCase(name, "Sentinel")){
+            TimeUnit.MILLISECONDS.sleep(200);
+        }else{
+            TimeUnit.MILLISECONDS.sleep(300);
+        }
         return String.format("Hello, %s at %s", name, DateUtil.formatLocalDateTime(LocalDateTime.now()));
     }
 
+    @SentinelResource(value = "hotParams"
+            , blockHandlerClass = HelloBlockHandler.class
+            , blockHandler = "hotParamsBlockHandler"
+    )
     @Override
-    public String test() {
-        return "Hello Sentinel";
+    public String hotParams(HelloRequest request) {
+        return JSONObject.toJSONString(request);
     }
+
 }

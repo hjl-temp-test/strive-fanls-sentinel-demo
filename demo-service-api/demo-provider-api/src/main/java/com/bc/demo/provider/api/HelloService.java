@@ -1,5 +1,7 @@
 package com.bc.demo.provider.api;
 
+import com.bc.demo.provider.request.HelloRequest;
+
 /**
  * @author fanlinsheng
  * @version 1.0.0
@@ -9,5 +11,5 @@ public interface HelloService {
 
     String sayHello(String name);
 
-    String test();
+    String hotParams(HelloRequest request);
 }

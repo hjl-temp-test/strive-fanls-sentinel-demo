@@ -2,10 +2,13 @@ package com.bc.demo.consumer.controller;
 
 import com.bc.demo.constant.AppConstant;
 import com.bc.demo.provider.api.HelloService;
+import com.bc.demo.provider.request.HelloRequest;
 import lombok.SneakyThrows;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.concurrent.TimeUnit;
@@ -29,15 +32,14 @@ public class DemoController {
         return helloService.sayHello(name);
     }
 
-    @GetMapping("test")
-    public String test() {
-//        return helloService.test();
-        return "Hello Sentinel";
+    @PostMapping("hot/params")
+    public String hotParams(@RequestBody HelloRequest request) {
+        return helloService.hotParams(request);
     }
 
     @GetMapping("demo")
     public String demo() {
-        return "Sentinel Demo";
+        return "Hello Sentinel";
     }
 
 }
