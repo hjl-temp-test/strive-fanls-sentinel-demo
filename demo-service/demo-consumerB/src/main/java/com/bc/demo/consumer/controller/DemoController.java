@@ -27,17 +27,10 @@ public class DemoController {
         return helloService.sayHello(name);
     }
 
-    @GetMapping("test")
-    public String test() {
-        return helloService.test();
-//        return "Hello Sentinel";
-    }
-
     @GetMapping("demo")
     public String demo() {
         return "Sentinel Demo";
     }
-
 
     @GetMapping("create")
     public String create() {

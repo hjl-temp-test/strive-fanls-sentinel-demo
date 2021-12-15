@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.concurrent.TimeUnit;
-
 /**
  * @author fanlinsheng
  * @version 1.0.0
@@ -28,7 +26,6 @@ public class DemoController {
     @SneakyThrows
     @GetMapping("hello/{name}")
     public String sayHello(@PathVariable("name") String name) {
-        TimeUnit.MILLISECONDS.sleep(500);
         return helloService.sayHello(name);
     }
 

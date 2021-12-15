@@ -29,7 +29,6 @@ public class HelloServiceImpl implements HelloService {
             , blockHandlerClass = HelloBlockHandler.class
             , blockHandler = "sayHelloBlockHandler"
     )
-
     @Override
     public String sayHello(String name) {
         log.info("请求了 com.bc.demo.provider.service.HelloServiceImpl.sayHello");
@@ -38,6 +37,7 @@ public class HelloServiceImpl implements HelloService {
         }else{
             TimeUnit.MILLISECONDS.sleep(300);
         }
+//        TimeUnit.MILLISECONDS.sleep(200);
         return String.format("Hello, %s at %s", name, DateUtil.formatLocalDateTime(LocalDateTime.now()));
     }
 
